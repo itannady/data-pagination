@@ -29,7 +29,6 @@ function showPage(list, page) {
   }
 }
 
-
 /*
 Create the `addPagination` function
 This function will create and insert/append the elements needed for the pagination buttons
@@ -37,36 +36,35 @@ This function will create and insert/append the elements needed for the paginati
 
 function addPagination(list) {
   let pageButtons = Math.ceil(list.length / itemsPerPage);
-  let linkList = document.querySelector('ul.link-list');
+  let linkList = document.querySelector("ul.link-list");
   linkList.innerHTML = "";
 
   for (let i = 0; i < pageButtons; i++) {
     linkList.innerHTML += `
         <li>
-         <button type="button">${i+1}</button>
+         <button type="button">${i + 1}</button>
         </li>
     
         `;
 
-        console.log(linkList)
+    console.log(linkList);
   }
-  
-  let firstChild = document.querySelector('ul.link-list li:first-child button');
-  firstChild.className = 'active';
 
-  linkList.addEventListener('click', function(e) {
-    if(e.target.tagName.toLowerCase() === 'button') {
-       let allButtons = document.querySelectorAll('ul.link-list li button')
-       Array.from(allButtons).forEach(function(button){
-        button.classList.remove('active');
-       })
+  let firstChild = document.querySelector("ul.link-list li:first-child button");
+  firstChild.className = "active";
 
-       e.target.classList.add('active')
-        let index = parseInt(e.target.innerHTML);
-        showPage(data, index);
-       
+  linkList.addEventListener("click", function (e) {
+    if (e.target.tagName.toLowerCase() === "button") {
+      let allButtons = document.querySelectorAll("ul.link-list li button");
+      Array.from(allButtons).forEach(function (button) {
+        button.classList.remove("active");
+      });
+
+      e.target.classList.add("active");
+      let index = parseInt(e.target.innerHTML);
+      showPage(data, index);
     }
-  })
+  });
 }
 
 // Call functions
